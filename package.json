@@ -45,6 +45,7 @@
 	"dependencies": {
 		"@sniptt/monads": "^0.5.10",
 		"downloadjs": "^1.4.7",
+		"gh-pages": "^6.1.1",
 		"pdf-lib": "^1.17.1",
 		"pdfjs-dist": "^4.0.379",
 		"svelte-pdf": "^1.0.20",

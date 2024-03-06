@@ -1,4 +1,4 @@
-import { getAsset } from './prepareAssets';
+import { getAsset } from '$components/PDF/utils/prepareAssets';
 
 export function readAsArrayBuffer(file) {
   return new Promise((resolve, reject) => {

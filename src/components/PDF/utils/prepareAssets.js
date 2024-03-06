@@ -1,3 +1,5 @@
+import {base} from '$app/paths';
+
 const scripts = [
 	{
 		name: 'pdfjsLib',
@@ -17,7 +19,7 @@ const scripts = [
 	{
 		name: 'makeTextPDF',
 		module: false,
-		src: '/makeTextPDF.js'
+		src: base + '/makeTextPDF.js'
 	}
 ];
 

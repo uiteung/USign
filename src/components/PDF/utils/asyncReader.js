@@ -1,5 +1,8 @@
 import { getAsset } from '$components/PDF/utils/prepareAssets';
 
+/**
+ * @param {Blob} file
+ */
 export function readAsArrayBuffer(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -9,20 +12,26 @@ export function readAsArrayBuffer(file) {
   });
 }
 
+
+/**
+ * @param {string | Blob } src
+ */
 export function readAsImage(src) {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => resolve(img);
     img.onerror = reject;
     if (src instanceof Blob) {
-      const url = window.URL.createObjectURL(src);
-      img.src = url;
+      img.src = window.URL.createObjectURL(src);
     } else {
       img.src = src;
     }
   });
 }
 
+/**
+ * @param {Blob} file
+ */
 export function readAsDataURL(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -32,6 +41,9 @@ export function readAsDataURL(file) {
   });
 }
 
+/**
+ * @param {BlobPart} file
+ */
 export async function readAsPDF(file) {
   const pdfjsLib = await getAsset('pdfjsLib');
   pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.mjs";

@@ -28,7 +28,8 @@ jobs:
 
       - name: build
         env:
-          BASE_PATH: 'https://euis.ulbi.ac.id/USign/'
+          NODE_ENV: production
+          BASE_PATH: '/USign'
         run: |
           yarn build
 

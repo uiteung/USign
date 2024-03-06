@@ -2,6 +2,11 @@ import { readAsArrayBuffer } from '$components/PDF/utils/asyncReader.js';
 import { fetchFont, getAsset } from '$components/PDF/utils/prepareAssets';
 import { noop } from '$components/PDF/utils/helper.js';
 
+/**
+ * @param {Blob} pdfFile
+ * @param {any[]} objects
+ * @param {string} name
+ */
 export async function save(pdfFile, objects, name) {
   const PDFLib = await getAsset('PDFLib');
   const download = await getAsset('download');

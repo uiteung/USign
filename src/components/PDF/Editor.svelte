@@ -225,7 +225,7 @@
         for="image"
         class:cursor-not-allowed={selectedPageIndex < 0}
         class:bg-gray-500={selectedPageIndex < 0}>
-        <img src="image.svg" alt="An icon for adding images" />
+        <img src="{base}/image.svg" alt="An icon for adding images" />
       </label>
       <label
         class="flex items-center justify-center h-full w-8 hover:bg-gray-500

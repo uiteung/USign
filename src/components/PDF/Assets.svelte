@@ -1,7 +1,7 @@
 <script lang="js">
 
 	import { onMount } from 'svelte';
-	import prepareAssets from './utils/prepareAssets.js'
+	import prepareAssets from '$components/PDF/utils/prepareAssets.js'
 
 	onMount(() => {
 		setTimeout(() => {

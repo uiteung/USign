@@ -1,7 +1,19 @@
+/**
+ * @param {HTMLElement} node
+ */
 export function pannable(node) {
+  /**
+     * @type {number}
+     */
   let x;
+  /**
+     * @type {number}
+     */
   let y;
 
+  /**
+   * @param {MouseEvent} event
+   */
   function handleMousedown(event) {
     x = event.clientX;
     y = event.clientY;
@@ -17,6 +29,10 @@ export function pannable(node) {
     window.addEventListener('mouseup', handleMouseup);
   }
 
+
+  /**
+     * @param {MouseEvent} event
+     */
   function handleMousemove(event) {
     const dx = event.clientX - x;
     const dy = event.clientY - y;
@@ -30,6 +46,9 @@ export function pannable(node) {
     );
   }
 
+  /**
+     * @param {MouseEvent}event
+     */
   function handleMouseup(event) {
     x = event.clientX;
     y = event.clientY;
@@ -42,6 +61,10 @@ export function pannable(node) {
     window.removeEventListener('mousemove', handleMousemove);
     window.removeEventListener('mouseup', handleMouseup);
   }
+
+  /**
+     * @param {TouchEvent} event
+     */
   function handleTouchStart(event) {
     if (event.touches.length > 1) return;
     const touch = event.touches[0];
@@ -58,6 +81,10 @@ export function pannable(node) {
     window.addEventListener('touchmove', handleTouchmove, { passive: false });
     window.addEventListener('touchend', handleTouchend);
   }
+
+  /**
+     * @param  {TouchEvent} event
+     */
   function handleTouchmove(event) {
     event.preventDefault();
     if (event.touches.length > 1) return;
@@ -73,6 +100,10 @@ export function pannable(node) {
       })
     );
   }
+
+  /**
+     * @param  {TouchEvent} event
+     */
   function handleTouchend(event) {
     const touch = event.changedTouches[0];
     x = touch.clientX;

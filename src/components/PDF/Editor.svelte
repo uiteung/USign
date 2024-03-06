@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import {base} from "$app/paths"
   import { fly } from "svelte/transition";
   import Tailwind from "./Tailwind.svelte";
   import PDFPage from "./PDFPage.svelte";
@@ -7,14 +8,14 @@
   import Text from "./Text.svelte";
   import Drawing from "./Drawing.svelte";
   import DrawingCanvas from "./DrawingCanvas.svelte";
-  import prepareAssets, { fetchFont } from "./utils/prepareAssets.js";
+  import { fetchFont } from "$components/PDF/utils/prepareAssets.js";
   import {
     readAsImage,
     readAsPDF,
     readAsDataURL
-  } from "./utils/asyncReader.js";
-  import { ggID } from "./utils/helper.js";
-  import { save } from "./utils/PDF.js";
+  } from "$components/PDF/utils/asyncReader.js";
+  import { ggID } from "$components/PDF/utils/helper.js";
+  import { save } from "$components/PDF/utils/PDF.js";
   const genID = ggID();
   let pdfFile;
   let pdfName = "";
@@ -28,7 +29,7 @@
   // for test purpose
   onMount(async () => {
     try {
-      const res = await fetch("/test.pdf");
+      const res = await fetch(base + "/test.pdf");
       const pdfBlob = await res.blob();
       await addPDF(pdfBlob);
       selectedPageIndex = 0;
@@ -233,7 +234,7 @@
         class:cursor-not-allowed={selectedPageIndex < 0}
         class:bg-gray-500={selectedPageIndex < 0}
         on:click={onAddTextField}>
-        <img src="notes.svg" alt="An icon for adding text" />
+        <img src="{base}/notes.svg" alt="An icon for adding text" />
       </label>
       <label
         class="flex items-center justify-center h-full w-8 hover:bg-gray-500
@@ -241,11 +242,11 @@
         on:click={onAddDrawing}
         class:cursor-not-allowed={selectedPageIndex < 0}
         class:bg-gray-500={selectedPageIndex < 0}>
-        <img src="gesture.svg" alt="An icon for adding drawing" />
+        <img src="{base}/gesture.svg" alt="An icon for adding drawing" />
       </label>
     </div>
     <div class="justify-center mr-3 md:mr-4 w-full max-w-xs hidden md:flex">
-      <img src="/edit.svg" class="mr-2" alt="a pen, edit pdf name" />
+      <img src="{base}/edit.svg" class="mr-2" alt="a pen, edit pdf name" />
       <input
         placeholder="Rename your PDF here"
         type="text"
@@ -262,7 +263,7 @@
     </button>
     <a href="https://github.com/ShizukuIchi/pdf-editor">
       <img
-        src="/GitHub-Mark-32px.png"
+        src="{base}/GitHub-Mark-32px.png"
         alt="A GitHub icon leads to personal GitHub page" />
     </a>
   </div>
@@ -287,7 +288,7 @@
   {/if}
   {#if pages.length}
     <div class="flex justify-center px-5 w-full md:hidden">
-      <img src="/edit.svg" class="mr-2" alt="a pen, edit pdf name" />
+      <img src="{base}/edit.svg" class="mr-2" alt="a pen, edit pdf name" />
       <input
         placeholder="Rename your PDF here"
         type="text"

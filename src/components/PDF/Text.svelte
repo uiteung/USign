@@ -1,10 +1,10 @@
 <script>
   import { onMount, createEventDispatcher } from "svelte";
   import Toolbar from "./Toolbar.svelte";
-  import { pannable } from "./utils/pannable.js";
-  import { tapout } from "./utils/tapout.js";
-  import { timeout } from "./utils/helper.js";
-  import { Fonts } from "./utils/prepareAssets.js";
+  import { pannable } from "$components/PDF/utils/pannable.js";
+  import { tapout } from "$components/PDF/utils/tapout.js";
+  import { timeout } from "$components/PDF/utils/helper.js";
+  import { Fonts } from "$components/PDF/utils/prepareAssets.js";
   export let size;
   export let text;
   export let lineHeight;

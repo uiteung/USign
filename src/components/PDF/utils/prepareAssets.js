@@ -23,22 +23,37 @@ const scripts = [
 	}
 ];
 
+/**
+ * @type {Object.<string, Promise<HTMLScriptElement>>}
+ */
+
 const assets = {};
 
-export function getAsset(name) {
-	if (assets[name]) return assets[name];
+/**
+ * @param {string} name
+ */
+export async function getAsset(name) {
+	if (await assets[name]) return assets[name];
 	const script = scripts.find((s) => s.name === name);
 	if (!script) throw new Error(`Script ${name} not exists.`);
 	return prepareAsset(script);
 }
 
-export function prepareAsset({ name, src, module }) {
-	if (assets[name]) return assets[name];
+/**
+ * @param {Object} asset
+ * @param {String} asset.name
+ * @param {String} asset.src
+ * @param {Boolean} asset.module
+ * @return {Promise<HTMLScriptElement>}
+ */
+export async function prepareAsset({ name, src, module }) {
+	if (await assets[name]) return assets[name];
 	assets[name] = new Promise((resolve, reject) => {
 		const script = document.createElement('script');
 		if (module) script.type = 'module';
 		script.src = src;
 		script.onload = () => {
+			// @ts-ignore
 			resolve(window[name]);
 			console.log(`${name} is loaded.`);
 		};
@@ -57,17 +72,29 @@ export default function prepareAssets() {
 
 // out of the box fonts
 const fonts = {
-	Courier: {
+	'Courier': {
+		/**
+         * @param {number} size
+         * @param {number} lineHeight
+         */
 		correction(size, lineHeight) {
 			return (size * lineHeight - size) / 2 + size / 6;
 		}
 	},
-	Helvetica: {
+	'Helvetica': {
+		/**
+		 * @param {number} size
+		 * @param {number} lineHeight
+		 */
 		correction(size, lineHeight) {
 			return (size * lineHeight - size) / 2 + size / 10;
 		}
 	},
 	'Times-Roman': {
+		/**
+		 * @param {number} size
+		 * @param {number} lineHeight
+		 */
 		correction(size, lineHeight) {
 			return (size * lineHeight - size) / 2 + size / 7;
 		}
@@ -76,8 +103,12 @@ const fonts = {
 // Available fonts
 export const Fonts = {
 	...fonts,
-	標楷體: {
+	'標楷體': {
 		src: '/CK.ttf', // 9.9 MB
+		/**
+		 * @param {number} size
+		 * @param {number} lineHeight
+		 */
 		correction(size, lineHeight) {
 			return (size * lineHeight - size) / 2;
 		}

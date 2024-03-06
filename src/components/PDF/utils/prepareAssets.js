@@ -115,6 +115,7 @@ export const Fonts = {
 	}
 };
 
+// @ts-expect-error error if font not found
 export function fetchFont(name) {
 	if (fonts[name]) return fonts[name];
 	const font = Fonts[name];

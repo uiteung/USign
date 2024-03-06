@@ -1,7 +1,6 @@
 <script>
   import { onMount, createEventDispatcher } from "svelte";
-  import { pannable } from "./utils/pannable.js";
-  import { readAsArrayBuffer } from "./utils/asyncReader.js";
+  import { pannable } from "$components/PDF/utils/pannable.js";
   export let payload;
   export let file;
   export let width;

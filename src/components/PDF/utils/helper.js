@@ -4,6 +4,10 @@ export function ggID() {
     return id++;
   };
 }
+
+/**
+ * @param {number} [ms]
+ */
 export function timeout(ms) {
   return new Promise((res) => setTimeout(res, ms));
 }

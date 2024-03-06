@@ -18,7 +18,7 @@ const config = {
 			'$components': './src/components',
 		},
 		paths: {
-			base: process.env.NODE_ENV === 'production' ? '/USign' : '',
+			base: process.env.BASE_PATH,
 		}
 	}
 };

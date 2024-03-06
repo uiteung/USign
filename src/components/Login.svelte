@@ -8,7 +8,11 @@
 	}
 
 	axios.
-		post("https://auth.ulbi.ac.id/api/whatsauth/token")
+		post("https://auth.ulbi.ac.id/api/whatsauth/token", null, {
+			headers:{
+				'login': getCookie("login"),
+			}
+	})
 		.catch(() => {
 		Swal.fire({
 			title: "Login",

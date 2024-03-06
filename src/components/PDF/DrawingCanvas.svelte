@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import { pannable } from "./utils/pannable.js";
+  import { pannable } from "$components/PDF/utils/pannable.js";
   const dispatch = createEventDispatcher();
   let canvas;
   let x = 0;

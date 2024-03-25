@@ -1,10 +1,12 @@
-<script>
+<script lang="ts">
+	import Login from '$components/Login.svelte';
 	import Header from './Header.svelte';
 	import './styles.css';
 	import '../app.pcss';
 </script>
 
 <div class="app">
+	<Login/>
 	<Header></Header>
 
 	<main>
